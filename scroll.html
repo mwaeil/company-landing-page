@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <style>
+        .indicator {
+            background: burlywood;
+            width: 10%;
+            height: 10%;
+            position: fixed;
+            right: 20px;
+            text-align: center
+        }
+
+        .div1 {
+            height: 90vh;
+            width: 50vw;
+            background: burlywood;
+        }
+
+        .div2 {
+            height: 90vh;
+            width: 50vw;
+            background: blueviolet;
+        }
+
+        .div3 {
+            height: 90vh;
+            width: 50vw;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="indicator">
+        Indicator
+    </div>
+
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+
+
+
+
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            $('.div1').each(function () {
+                if (isScrolledIntoView($(this))) {
+                    $('.indicator').css("background", "burlywood");
+                }
+            });
+            $('.div2').each(function () {
+                if (isScrolledIntoView($(this))) {
+                    $('.indicator').css("background", "blueviolet");
+                }
+            });
+            $('.div3').each(function () {
+                if (isScrolledIntoView($(this))) {
+                    $('.indicator').css("background", "pink");
+                }
+            });
+
+            function isScrolledIntoView(elem) {
+                var $elem = $(elem);
+                var $window = $(window);
+                var docViewTop = $window.scrollTop();
+                var docViewBottom = docViewTop + $window.height();
+                var elemTop = $elem.offset().top;
+                var elemBottom = elemTop + $elem.height();
+                return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            }
+
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
